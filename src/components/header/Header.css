@@ -1,0 +1,66 @@
+header {
+    display: flex;
+    /* background-color: #F55A5A; */
+    max-height: 3.5rem;
+    min-height: 3.5rem;
+    flex: 1 1 10%;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+    /* border-bottom: 1rem solid black; */
+
+    .react-logo {
+        width: 50px;
+    }
+
+    .logo-link {
+        display: flex;
+        place-items: center;
+        transition: color 100ms ease-in;
+        cursor: pointer;
+
+        span {
+            font-size: 1.6rem;
+            color: #00d8ff;
+            padding-left: .5rem;
+            vertical-align: middle;
+
+            &:hover {
+                color: #00abca;
+            }
+        }
+    }
+
+    .icon-link {
+        display: flex;
+        place-items: center;
+        /* transition: color 100ms ease-in; */
+        cursor: pointer;
+
+        span {
+            font-size: 1.5rem;
+            color: #000000;
+        }
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+        margin-left: 1rem;
+        margin-right: .4rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .icon-link {
+            span {
+                color: #ffffff;
+            }
+        }
+
+        /* .icon {
+            &.globe {
+                filter: invert(1);
+            }
+        } */
+    }
+}
