@@ -1,19 +1,20 @@
 import './Main.css';
 import Card from '../card/Card';
 
-const TRAVEL_DATA = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
 
 function MainContent() {
-  const cardsElements = TRAVEL_DATA.map((travelData) => (
-    <Card
-      key={travelData.id}
-      {...travelData}
-    />
-  ));
 
   return (
-    <main>
-      {cardsElements}
+    <main className="flex-grow-1 box-shadow">
+      <form action="" className="add-ingredient-form flex-row gap-1">
+        <input
+          type="text"
+          placeholder="e.g. oregano"
+          aria-label="Add ingredient"
+          className="flex-grow-1"
+        />
+        <button>Add ingredient</button>
+      </form>
     </main>
   );
 }

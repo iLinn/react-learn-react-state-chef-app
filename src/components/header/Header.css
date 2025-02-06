@@ -1,8 +1,8 @@
 header {
     display: flex;
     /* background-color: #F55A5A; */
-    max-height: 3.5rem;
-    min-height: 3.5rem;
+    max-height: 4rem;
+    min-height: 4rem;
     flex: 1 1 10%;
     align-items: center;
     padding: 0 1rem;
@@ -38,16 +38,17 @@ header {
         cursor: pointer;
 
         span {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #000000;
         }
     }
 
     .icon {
-        width: 30px;
-        height: 30px;
-        margin-left: 1rem;
-        margin-right: .4rem;
+        &.chef {
+            width: 45px;
+            margin-left: 1rem;
+            margin-right: .4rem;
+        }
     }
 
     @media (prefers-color-scheme: dark) {

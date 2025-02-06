@@ -1,8 +1,8 @@
 footer {
-  /* border-top: 1rem solid black; */
   display: flex;
   flex: 1 1 10%;
   justify-content: flex-end;
   max-height: 1.5rem;
   padding: .5rem 1rem;
+  align-items: center;
 }
