@@ -60,10 +60,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-main {
-  padding: 1em 2em;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -127,6 +123,10 @@ main {
   font-weight: bolder;
 }
 
+.text-capitalize {
+  text-transform: capitalize;
+}
+
 .mb-1 {
   margin-bottom: 1rem;
 }
@@ -142,3 +142,9 @@ main {
   background-repeat: no-repeat;
   background-size: 1rem;
 } */
+
+.plus-icon:before {
+  padding-right: 0.2rem;
+  content: '+';
+  font-weight: 600;
+}
