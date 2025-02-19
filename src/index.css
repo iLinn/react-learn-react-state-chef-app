@@ -123,6 +123,10 @@ button:focus-visible {
   font-weight: bolder;
 }
 
+.fs-italic {
+  font-style: italic;
+}
+
 .text-capitalize {
   text-transform: capitalize;
 }
