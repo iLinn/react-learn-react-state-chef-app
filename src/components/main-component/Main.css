@@ -19,6 +19,31 @@ main {
       max-width: 500px;
     }
   }
+
+  .get-recipe-container {
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    background: #5e5e5e;
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    p {
+      line-height: 20px;
+      font-size: .875rem;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .get-recipe-container {
+      background: #F0EFEB;
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
