@@ -1,0 +1,42 @@
+.card-image-container {
+  width: 125px;
+  height: 170px;
+  overflow: hidden;
+  border-radius: 1rem;
+  flex-shrink: 0;
+
+  .card-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+}
+
+.card {
+  max-width: 90%;
+
+  .card-content {
+    span.place {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-right: 0.8rem;
+      letter-spacing: 1.2px;
+    }
+
+    a.map-link {
+      font-size: 0.7rem;
+      text-decoration: underline;
+
+      &:visited {
+        color: #918E9B;
+      }
+    }
+  }
+
+  h2, h4, p {
+    margin: 0.5rem 0;
+  }
+
+
+}

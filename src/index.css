@@ -139,14 +139,6 @@ button:focus-visible {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 }
 
-/* .marker-icon:before {
-  padding-left: 1.2rem;
-  content: '';
-  background-image: url('src/assets/marker-icon.svg');
-  background-repeat: no-repeat;
-  background-size: 1rem;
-} */
-
 .plus-icon:before {
   padding-right: 0.2rem;
   content: '+';
