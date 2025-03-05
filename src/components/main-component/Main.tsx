@@ -4,11 +4,20 @@ import Recipe from '../recipe-mock/Recipe';
 import Loading from '../shared/loading/Loading';
 import AddIngredient from '../ingredients/add-ingredient-form/AddIngredientForm';
 import IngredientsList from '../ingredients/ingredients-list/IngredientsList';
+import { getRecipeFromMistral } from '../../ai';
+
+const HF_ACCESS_TOKEN = import.meta.env.VITE_HF_ACCESS_TOKEN;
+const REACT_APP_HF_ACCESS_TOKEN = import.meta.env.VITE_REACT_APP_HF_ACCESS_TOKEN;
+
+console.log('VITE_HF_ACCESS_TOKEN', HF_ACCESS_TOKEN);
+console.log('VITE_REACT_APP_HF_ACCESS_TOKEN', REACT_APP_HF_ACCESS_TOKEN);
 
 function MainContent() {
+
   const [ingredientsList, setIngredientsList] = useState<Set<string>>(new Set([]));
   const [recipeShown, setRecipeShown] = useState(false);
   const [recipeRequested, setRecipeRequested] = useState(false);
+  const [recipe, setRecipe] = useState<string>('');
 
   function handleAddIngredient(formData: FormData): void {
     // e.preventDefault();
@@ -31,15 +40,26 @@ function MainContent() {
 
   function handleRequestRecipe(): void {
     setRecipeRequested(true);
-    setTimeout(() => {
+    getRecipeFromMistral([...ingredientsList]).then((response) => {
+      console.log(response);
+      const newRecipe = response || 'No recipe found';
+      setRecipe(newRecipe);
       setRecipeShown(true);
-    }, 2000);
+    }).catch((error) => {
+      console.error(error);
+    }).finally(() => {
+
+      console.log('FINALLY');
+    });
+
+
   }
 
   function handleResetForm(): void {
     setIngredientsList(new Set([]));
     setRecipeShown(false);
     setRecipeRequested(false);
+    setRecipe('');
   }
 
   return (
@@ -48,13 +68,13 @@ function MainContent() {
         <AddIngredient onAddIngredient={handleAddIngredient} />
         {(ingredientsList.size > 0) && <IngredientsList ingredients={ingredientsList} onRequestRecipe={handleRequestRecipe} />}
       </>}
-      {(recipeShown && recipeRequested) && <section>
-        <Recipe />
+      {(recipeShown && recipeRequested) && <>
+        <Recipe recipeMarkdown={recipe}/>
         <button
           className="material-ui-button"
           onClick={handleResetForm}
         >Get another recipe</button>
-      </section>}
+      </>}
       {(!recipeShown && recipeRequested) && <section>
         <Loading />
       </section>}
