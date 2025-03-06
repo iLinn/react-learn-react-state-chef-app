@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Main.css';
-import Recipe from '../recipe-mock/Recipe';
+import Recipe from '../recipe/Recipe';
 import Loading from '../shared/loading/Loading';
 import AddIngredient from '../ingredients/add-ingredient-form/AddIngredientForm';
 import IngredientsList from '../ingredients/ingredients-list/IngredientsList';
@@ -15,7 +15,6 @@ console.log('VITE_REACT_APP_HF_ACCESS_TOKEN', REACT_APP_HF_ACCESS_TOKEN);
 function MainContent() {
 
   const [ingredientsList, setIngredientsList] = useState<Set<string>>(new Set([]));
-  const [recipeShown, setRecipeShown] = useState(false);
   const [recipeRequested, setRecipeRequested] = useState(false);
   const [recipe, setRecipe] = useState<string>('');
 
@@ -44,38 +43,35 @@ function MainContent() {
       console.log(response);
       const newRecipe = response || 'No recipe found';
       setRecipe(newRecipe);
-      setRecipeShown(true);
     }).catch((error) => {
       console.error(error);
     }).finally(() => {
-
       console.log('FINALLY');
     });
 
-
+    // await const recipeMarkdown = getRecipeFromMistral([...ingredientsList]);
   }
 
   function handleResetForm(): void {
     setIngredientsList(new Set([]));
-    setRecipeShown(false);
     setRecipeRequested(false);
     setRecipe('');
   }
 
   return (
     <main className="flex-grow-1 box-shadow">
-      {(!recipeShown && !recipeRequested) && <>
+      {(!recipe && !recipeRequested) && <>
         <AddIngredient onAddIngredient={handleAddIngredient} />
         {(ingredientsList.size > 0) && <IngredientsList ingredients={ingredientsList} onRequestRecipe={handleRequestRecipe} />}
       </>}
-      {(recipeShown && recipeRequested) && <>
+      {(recipe && recipeRequested) && <>
         <Recipe recipeMarkdown={recipe}/>
         <button
           className="material-ui-button"
           onClick={handleResetForm}
         >Get another recipe</button>
       </>}
-      {(!recipeShown && recipeRequested) && <section>
+      {(!recipe && recipeRequested) && <section>
         <Loading />
       </section>}
     </main>
